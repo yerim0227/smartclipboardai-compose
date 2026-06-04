@@ -116,7 +116,7 @@ import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-enum class Screen { Home, Data, Tasks, TopicDetail, ActionReview }
+enum class Screen { Home, Data, Tasks, TopicDetail, ActionReview, Storage, History, AiSuggest, Analyzing }
 enum class NavTab { Home, Data, Tasks }
 enum class PermissionStatus { Unknown, Selecting, Granted, Partial, Denied }
 

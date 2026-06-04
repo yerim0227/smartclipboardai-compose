@@ -139,7 +139,7 @@ fun SmartClipboardAIApp() {
         }
     }
 
-    val showBottomBar = screen in listOf(Screen.Home, Screen.Data, Screen.Tasks) && !dataSelectMode
+    val showBottomBar = false
 
     Scaffold(
         bottomBar = {
@@ -173,6 +173,10 @@ fun SmartClipboardAIApp() {
                     },
                 )
                 Screen.Tasks -> TasksScreen(navigate = ::navigate)
+                Screen.History -> HistoryScreen(navigate = ::navigate)
+                Screen.Storage -> StorageScreen(navigate = ::navigate)
+                Screen.AiSuggest -> AiSuggestScreen(navigate = ::navigate, data = navData)
+                Screen.Analyzing -> AnalyzingScreen(navigate = ::navigate, data = navData)
                 Screen.TopicDetail -> TopicDetailScreen(navigate = ::navigate, data = navData)
                 Screen.ActionReview -> ActionReviewScreen(navigate = ::navigate, data = navData)
             }
@@ -209,7 +213,13 @@ fun SmartClipboardAIApp() {
                     onClick = {
                         bottomSheetVisible = false
                         dataSelectMode = false
-                        navigate(Screen.TopicDetail, mapOf("topicId" to "1"))
+                        navigate(
+                            Screen.Analyzing,
+                            mapOf(
+                                "selectedCount" to sheetCount.toString(),
+                                "topicName" to sheetTopicName,
+                            ),
+                        )
                     },
                 )
                 Button(
