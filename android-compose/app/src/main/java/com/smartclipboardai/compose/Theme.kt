@@ -150,4 +150,3 @@ fun SmartClipboardAITheme(content: @Composable () -> Unit) {
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)

@@ -116,6 +116,7 @@ import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+@Preview(showBackground = true)
 @Composable
 fun SmartClipboardPreview() {
     SmartClipboardAITheme {

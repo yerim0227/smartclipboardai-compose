@@ -116,6 +116,7 @@ import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SmartClipboardAIApp() {
     var activeTab by remember { mutableStateOf(NavTab.Home) }

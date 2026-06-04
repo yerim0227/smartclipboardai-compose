@@ -349,8 +349,8 @@ fun DataHeader(
         Row(verticalAlignment = Alignment.CenterVertically) {
             Box(Modifier.width(72.dp)) {
                 when {
-                    !selectMode -> DangerSmallButton("전체 삭제", onDeleteAll)
-                    selectedCount > 0 -> DangerSmallButton("삭제", onDeleteSelected)
+                    !selectMode -> DangerSmallButton("전체 삭제", onClick = onDeleteAll)
+                    selectedCount > 0 -> DangerSmallButton("삭제", onClick = onDeleteSelected)
                 }
             }
             Text(
@@ -391,7 +391,7 @@ fun ConfirmBanner(text: String, onConfirm: () -> Unit, onCancel: () -> Unit) {
     ) {
         Icon(Icons.Default.Warning, null, tint = AppColors.Red, modifier = Modifier.size(16.dp))
         Text(text, color = AppColors.Red, fontSize = 11.sp, modifier = Modifier.padding(horizontal = 8.dp).weight(1f))
-        DangerSmallButton("삭제", onConfirm)
+        DangerSmallButton("삭제", onClick = onConfirm)
         Spacer(Modifier.width(6.dp))
         SmallOutlineButton("취소", onClick = onCancel)
     }

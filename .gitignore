@@ -1,6 +1,9 @@
 node_modules/
 dist/
 .vite/
+.gradle/
+.android/
+build/
 
 .env
 .env.*
