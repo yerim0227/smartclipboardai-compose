@@ -42,22 +42,22 @@ import kotlinx.coroutines.delay
 private data class DraftType(val label: String, val icon: ImageVector, val color: Color)
 
 private val analyzingSteps = listOf(
-    "Loading selected data",
-    "Analyzing text and images",
-    "Preparing action drafts",
+    "선택한 데이터 불러오는 중",
+    "텍스트와 이미지 분석 중",
+    "실행 초안 준비 중",
 )
 
 private val generatedDrafts = listOf(
-    DraftType("Daily note", Icons.Default.Description, AppColors.Blue),
-    DraftType("Calendar", Icons.Default.CalendarMonth, Color(0xFF2563EB)),
-    DraftType("Reminder", Icons.Default.Notifications, AppColors.BlueDeep),
-    DraftType("Share", Icons.Default.Share, AppColors.Cyan),
+    DraftType("일일 노트", Icons.Default.Description, AppColors.Blue),
+    DraftType("캘린더", Icons.Default.CalendarMonth, Color(0xFF2563EB)),
+    DraftType("리마인더", Icons.Default.Notifications, AppColors.BlueDeep),
+    DraftType("공유", Icons.Default.Share, AppColors.Cyan),
 )
 
 @Composable
 fun AnalyzingScreen(navigate: (Screen, Map<String, String>) -> Unit, data: Map<String, String>) {
     val selectedCount = data["selectedCount"] ?: "0"
-    val topicName = data["topicName"]?.ifBlank { "Collected items" } ?: "Collected items"
+    val topicName = data["topicName"]?.ifBlank { "수집한 항목" } ?: "수집한 항목"
     var stepIndex by remember { mutableStateOf(0) }
     var visibleDrafts by remember { mutableStateOf(0) }
     var done by remember { mutableStateOf(false) }
@@ -95,12 +95,12 @@ fun AnalyzingScreen(navigate: (Screen, Map<String, String>) -> Unit, data: Map<S
         ) {
             Box(Modifier.size(8.dp).clip(CircleShape).background(Color(0xFF34D399)))
             Spacer(Modifier.width(8.dp))
-            Text("$selectedCount items selected", color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+            Text("${selectedCount}개 선택됨", color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.Bold)
         }
 
         Spacer(Modifier.height(32.dp))
         Text(topicName, color = Color.White, fontSize = 23.sp, fontWeight = FontWeight.ExtraBold)
-        Text("AI is reading the selected data and generating drafts.", color = Color(0xFFA5B4FC), fontSize = 12.sp)
+        Text("AI가 선택한 데이터를 읽고 초안을 생성하고 있어요.", color = Color(0xFFA5B4FC), fontSize = 12.sp)
 
         Spacer(Modifier.height(42.dp))
         Column(verticalArrangement = Arrangement.spacedBy(14.dp), modifier = Modifier.fillMaxWidth()) {
@@ -140,7 +140,7 @@ fun AnalyzingScreen(navigate: (Screen, Map<String, String>) -> Unit, data: Map<S
 
         if (done) {
             Spacer(Modifier.height(36.dp))
-            Text("Generated drafts $visibleDrafts", color = Color(0xFF93C5FD), fontSize = 11.sp, fontWeight = FontWeight.Bold)
+            Text("생성된 초안 ${visibleDrafts}개", color = Color(0xFF93C5FD), fontSize = 11.sp, fontWeight = FontWeight.Bold)
             Spacer(Modifier.height(12.dp))
             Column(verticalArrangement = Arrangement.spacedBy(8.dp), modifier = Modifier.fillMaxWidth()) {
                 generatedDrafts.take(visibleDrafts).forEach { draft ->
@@ -162,6 +162,6 @@ fun AnalyzingScreen(navigate: (Screen, Map<String, String>) -> Unit, data: Map<S
         }
 
         Spacer(Modifier.weight(1f))
-        Text(if (done) "Opening draft screen..." else "AI Agent is analyzing...", color = Color(0xFF93C5FD).copy(alpha = 0.50f), fontSize = 10.sp)
+        Text(if (done) "초안 화면으로 이동 중..." else "AI 에이전트가 분석 중입니다...", color = Color(0xFF93C5FD).copy(alpha = 0.50f), fontSize = 10.sp)
     }
 }

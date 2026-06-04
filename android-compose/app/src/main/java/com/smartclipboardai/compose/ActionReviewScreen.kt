@@ -54,7 +54,7 @@ import kotlinx.coroutines.delay
 fun ActionReviewScreen(navigate: (Screen, Map<String, String>) -> Unit, data: Map<String, String>) {
     val config = actionConfigs[data["actionType"]] ?: actionConfigs.getValue("note")
     val topicId = data["topicId"] ?: "1"
-    val topicTitle = data["topicTitle"] ?: "Screenshot collection"
+    val topicTitle = data["topicTitle"] ?: "스크린샷 모음"
     val from = data["from"].orEmpty()
     val query = data["query"].orEmpty()
     val backData = mapOf("topicId" to topicId, "topicTitle" to topicTitle, "from" to from, "query" to query)
@@ -89,8 +89,8 @@ fun ActionReviewScreen(navigate: (Screen, Map<String, String>) -> Unit, data: Ma
                 Icon(Icons.Default.Check, null, tint = Color.White, modifier = Modifier.size(30.dp))
             }
             Spacer(Modifier.height(18.dp))
-            Text("Executed", color = AppColors.Slate800, fontSize = 17.sp, fontWeight = FontWeight.ExtraBold)
-            Text("Returning to the topic detail.", color = AppColors.Slate400, fontSize = 12.sp)
+            Text("실행 완료", color = AppColors.Slate800, fontSize = 17.sp, fontWeight = FontWeight.ExtraBold)
+            Text("상세 화면으로 돌아가는 중입니다.", color = AppColors.Slate400, fontSize = 12.sp)
         }
         return
     }
@@ -126,7 +126,7 @@ fun ActionReviewScreen(navigate: (Screen, Map<String, String>) -> Unit, data: Ma
                 Spacer(Modifier.width(8.dp))
                 Column(Modifier.weight(1f)) {
                     Text(config.title, color = AppColors.Slate800, fontSize = 15.sp, fontWeight = FontWeight.ExtraBold)
-                    Text("AI draft · review before executing", color = AppColors.Slate400, fontSize = 10.sp)
+                    Text("AI 초안 · 실행 전 검토", color = AppColors.Slate400, fontSize = 10.sp)
                 }
             }
         }
@@ -144,7 +144,7 @@ fun ActionReviewScreen(navigate: (Screen, Map<String, String>) -> Unit, data: Ma
                 ) {
                     Icon(Icons.Default.Replay, null, tint = config.color, modifier = Modifier.size(13.dp))
                     Spacer(Modifier.width(6.dp))
-                    Text("Edited version v$version", color = config.color, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                    Text("수정된 버전 $version", color = config.color, fontSize = 11.sp, fontWeight = FontWeight.Bold)
                 }
             }
         }
@@ -157,14 +157,14 @@ fun ActionReviewScreen(navigate: (Screen, Map<String, String>) -> Unit, data: Ma
                 elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
             ) {
                 Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                    FieldBlock("Title") {
+                    FieldBlock("제목") {
                         if (editing) {
                             OutlinedTextField(value = title, onValueChange = { title = it }, modifier = Modifier.fillMaxWidth(), singleLine = true)
                         } else {
                             ReadOnlyBox { Text(title, color = AppColors.Slate800, fontSize = 12.sp, fontWeight = FontWeight.SemiBold) }
                         }
                     }
-                    FieldBlock("Body") {
+                    FieldBlock("본문") {
                         if (editing) {
                             OutlinedTextField(value = body, onValueChange = { body = it }, modifier = Modifier.fillMaxWidth(), minLines = 7)
                         } else {
@@ -193,7 +193,7 @@ fun ActionReviewScreen(navigate: (Screen, Map<String, String>) -> Unit, data: Ma
                             Icon(Icons.Default.AutoAwesome, null, tint = Color.White, modifier = Modifier.size(12.dp))
                         }
                         Spacer(Modifier.width(8.dp))
-                        Text("Ask AI to revise", color = config.color, fontSize = 12.sp, fontWeight = FontWeight.ExtraBold)
+                        Text("AI에게 수정 요청", color = config.color, fontSize = 12.sp, fontWeight = FontWeight.ExtraBold)
                         if (typing) Text("  ...", color = config.color, fontSize = 12.sp)
                     }
                     Row(
@@ -202,7 +202,7 @@ fun ActionReviewScreen(navigate: (Screen, Map<String, String>) -> Unit, data: Ma
                             .padding(horizontal = 12.dp, vertical = 10.dp),
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                     ) {
-                        listOf("Shorter", "Summary only", "Change title", "Translate", "Friendlier").forEach { suggestion ->
+                        listOf("짧게", "요약만", "제목 변경", "번역", "더 친근하게").forEach { suggestion ->
                             Text(
                                 suggestion,
                                 modifier = Modifier
@@ -210,7 +210,7 @@ fun ActionReviewScreen(navigate: (Screen, Map<String, String>) -> Unit, data: Ma
                                     .clickable(enabled = !typing) {
                                         typing = true
                                         version += 1
-                                        body = "$body\n\n[$suggestion applied]"
+                                        body = "$body\n\n[$suggestion 적용됨]"
                                         typing = false
                                     }
                                     .padding(horizontal = 12.dp, vertical = 7.dp),
@@ -230,7 +230,7 @@ fun ActionReviewScreen(navigate: (Screen, Map<String, String>) -> Unit, data: Ma
                         TextField(
                             value = input,
                             onValueChange = { input = it },
-                            placeholder = { Text("Type a revision request", fontSize = 12.sp) },
+                            placeholder = { Text("수정 요청을 입력하세요", fontSize = 12.sp) },
                             modifier = Modifier.weight(1f),
                             singleLine = true,
                             colors = TextFieldDefaults.colors(
@@ -244,7 +244,7 @@ fun ActionReviewScreen(navigate: (Screen, Map<String, String>) -> Unit, data: Ma
                             onClick = {
                                 if (input.isNotBlank()) {
                                     version += 1
-                                    body = "$body\n\n[Updated: $input]"
+                                    body = "$body\n\n[수정 요청: $input]"
                                     input = ""
                                 }
                             },
@@ -274,7 +274,7 @@ fun ActionReviewScreen(navigate: (Screen, Map<String, String>) -> Unit, data: Ma
                 ) {
                     Icon(Icons.Default.Edit, null, modifier = Modifier.size(15.dp))
                     Spacer(Modifier.width(6.dp))
-                    Text(if (editing) "Done" else "Edit", fontWeight = FontWeight.Bold)
+                    Text(if (editing) "완료" else "편집", fontWeight = FontWeight.Bold)
                 }
                 Button(
                     onClick = { executed = true },
@@ -285,7 +285,7 @@ fun ActionReviewScreen(navigate: (Screen, Map<String, String>) -> Unit, data: Ma
                 ) {
                     Icon(Icons.Default.Check, null, modifier = Modifier.size(15.dp))
                     Spacer(Modifier.width(6.dp))
-                    Text("Execute", fontWeight = FontWeight.Bold)
+                    Text("실행", fontWeight = FontWeight.Bold)
                 }
             }
         }

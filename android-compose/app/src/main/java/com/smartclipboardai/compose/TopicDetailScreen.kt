@@ -47,10 +47,10 @@ private data class TopicActionCard(
 )
 
 private val topicActionCards = listOf(
-    TopicActionCard("note", "Daily note", Icons.Default.Description, AppColors.Blue, "Draft", "Organize five screenshots into a daily note."),
-    TopicActionCard("calendar", "Calendar", Icons.Default.CalendarMonth, Color(0xFF2563EB), "Draft", "Add workshop and travel schedules."),
-    TopicActionCard("reminder", "Reminder", Icons.Default.Notifications, AppColors.BlueDeep, "Draft", "Prepare shopping and workshop reminders."),
-    TopicActionCard("share", "Share", Icons.Default.Share, AppColors.Cyan, "Draft", "Create a shareable summary message."),
+    TopicActionCard("note", "일일 노트", Icons.Default.Description, AppColors.Blue, "초안", "스크린샷 5개를 일일 노트로 정리해요."),
+    TopicActionCard("calendar", "캘린더", Icons.Default.CalendarMonth, Color(0xFF2563EB), "초안", "워크숍과 여행 일정을 추가해요."),
+    TopicActionCard("reminder", "리마인더", Icons.Default.Notifications, AppColors.BlueDeep, "초안", "쇼핑과 워크숍 알림을 준비해요."),
+    TopicActionCard("share", "공유", Icons.Default.Share, AppColors.Cyan, "초안", "공유할 수 있는 요약 메시지를 만들어요."),
 )
 
 @Composable
@@ -58,7 +58,7 @@ fun TopicDetailScreen(navigate: (Screen, Map<String, String>) -> Unit, data: Map
     val from = data["from"].orEmpty()
     val query = data["query"].orEmpty()
     val topicId = data["topicId"] ?: "1"
-    val title = data["topicTitle"] ?: "Screenshot collection"
+    val title = data["topicTitle"] ?: "스크린샷 모음"
 
     fun goBack() {
         when (from) {
@@ -93,14 +93,14 @@ fun TopicDetailScreen(navigate: (Screen, Map<String, String>) -> Unit, data: Map
                 Spacer(Modifier.width(12.dp))
                 Column(Modifier.weight(1f)) {
                     Text(title, color = AppColors.Slate800, fontSize = 16.sp, fontWeight = FontWeight.ExtraBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
-                    Text("AI generated ${topicActionCards.size} action drafts", color = AppColors.Slate400, fontSize = 10.sp)
+                    Text("AI가 실행 초안 ${topicActionCards.size}개를 생성했어요", color = AppColors.Slate400, fontSize = 10.sp)
                 }
             }
         }
 
         item {
             Text(
-                "Review a draft before executing it.",
+                "실행하기 전에 초안을 확인하세요.",
                 color = AppColors.Slate500,
                 fontSize = 12.sp,
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 14.dp),

@@ -39,6 +39,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -55,43 +56,48 @@ fun HomeScreen(navigate: (Screen, Map<String, String>) -> Unit) {
             .padding(top = 36.dp),
     ) {
         Box(Modifier.fillMaxWidth()) {
-            IconButton(
-                onClick = { settingsOpen = true },
-                modifier = Modifier
-                    .align(Alignment.TopEnd)
-                    .size(42.dp)
-                    .border(1.dp, AppColors.Border, RoundedCornerShape(16.dp)),
-            ) {
-                Icon(Icons.Default.Settings, contentDescription = "Settings", tint = AppColors.Blue)
-            }
-            DropdownMenu(
-                expanded = settingsOpen,
-                onDismissRequest = { settingsOpen = false },
-            ) {
-                DropdownMenuItem(
-                    text = { Text("History", fontWeight = FontWeight.Bold) },
-                    leadingIcon = { Icon(Icons.Default.History, null, tint = AppColors.Blue) },
-                    onClick = {
-                        settingsOpen = false
-                        navigate(Screen.History, emptyMap())
-                    },
-                )
-                DropdownMenuItem(
-                    text = { Text("Storage", fontWeight = FontWeight.Bold) },
-                    leadingIcon = { Icon(Icons.Default.Storage, null, tint = AppColors.Blue) },
-                    onClick = {
-                        settingsOpen = false
-                        navigate(Screen.Storage, emptyMap())
-                    },
-                )
-                DropdownMenuItem(
-                    text = { Text("Data", fontWeight = FontWeight.Bold) },
-                    leadingIcon = { Icon(Icons.Default.Storage, null, tint = AppColors.Blue) },
-                    onClick = {
-                        settingsOpen = false
-                        navigate(Screen.Data, emptyMap())
-                    },
-                )
+            Box(modifier = Modifier.align(Alignment.TopEnd)) {
+                IconButton(
+                    onClick = { settingsOpen = true },
+                    modifier = Modifier
+                        .size(42.dp)
+                        .border(1.dp, AppColors.Border, RoundedCornerShape(16.dp)),
+                ) {
+                    Icon(Icons.Default.Settings, contentDescription = "설정", tint = AppColors.Blue)
+                }
+                DropdownMenu(
+                    expanded = settingsOpen,
+                    onDismissRequest = { settingsOpen = false },
+                    offset = DpOffset(x = (-124).dp, y = 8.dp),
+                    modifier = Modifier
+                        .width(176.dp)
+                        .background(Color(0xFFF8F3FF)),
+                ) {
+                    DropdownMenuItem(
+                        text = { Text("히스토리", fontWeight = FontWeight.Bold) },
+                        leadingIcon = { Icon(Icons.Default.History, null, tint = AppColors.Blue) },
+                        onClick = {
+                            settingsOpen = false
+                            navigate(Screen.History, emptyMap())
+                        },
+                    )
+                    DropdownMenuItem(
+                        text = { Text("저장공간", fontWeight = FontWeight.Bold) },
+                        leadingIcon = { Icon(Icons.Default.Storage, null, tint = AppColors.Blue) },
+                        onClick = {
+                            settingsOpen = false
+                            navigate(Screen.Storage, emptyMap())
+                        },
+                    )
+                    DropdownMenuItem(
+                        text = { Text("수집 데이터", fontWeight = FontWeight.Bold) },
+                        leadingIcon = { Icon(Icons.Default.Storage, null, tint = AppColors.Blue) },
+                        onClick = {
+                            settingsOpen = false
+                            navigate(Screen.Data, emptyMap())
+                        },
+                    )
+                }
             }
         }
 
@@ -104,7 +110,7 @@ fun HomeScreen(navigate: (Screen, Map<String, String>) -> Unit) {
             Icon(Icons.Default.AutoAwesome, contentDescription = null, tint = AppColors.Blue, modifier = Modifier.size(54.dp))
             Spacer(Modifier.height(14.dp))
             Text("SmartClipboardAI", color = AppColors.Slate800, fontSize = 30.sp, fontWeight = FontWeight.ExtraBold)
-            Text("Collected context, organized by AI", color = AppColors.Slate400, fontSize = 12.sp)
+            Text("수집한 정보를 AI가 정리해드려요", color = AppColors.Slate400, fontSize = 12.sp)
         }
 
         Spacer(Modifier.height(38.dp))
@@ -115,14 +121,14 @@ fun HomeScreen(navigate: (Screen, Map<String, String>) -> Unit) {
                 .background(BlueGradient, RoundedCornerShape(22.dp))
                 .padding(20.dp),
         ) {
-            Text("What should I organize?", color = Color.White, fontSize = 19.sp, fontWeight = FontWeight.ExtraBold)
-            Text("Search naturally or let AI find a topic.", color = Color(0xFFC7D2FE), fontSize = 11.sp)
+            Text("무엇을 정리할까요?", color = Color.White, fontSize = 19.sp, fontWeight = FontWeight.ExtraBold)
+            Text("자연스럽게 검색하거나 AI에게 주제를 맡겨보세요.", color = Color(0xFFC7D2FE), fontSize = 11.sp)
             Spacer(Modifier.height(16.dp))
             TextField(
                 value = query,
                 onValueChange = { query = it },
                 modifier = Modifier.fillMaxWidth(),
-                placeholder = { Text("meeting notes, travel links, schedules", color = Color.White.copy(alpha = 0.48f), fontSize = 13.sp) },
+                placeholder = { Text("회의 메모, 여행 링크, 일정 캡처", color = Color.White.copy(alpha = 0.48f), fontSize = 13.sp) },
                 singleLine = true,
                 shape = RoundedCornerShape(14.dp),
                 colors = TextFieldDefaults.colors(
@@ -144,7 +150,7 @@ fun HomeScreen(navigate: (Screen, Map<String, String>) -> Unit) {
                 ) {
                     Icon(Icons.Default.Psychology, null, modifier = Modifier.size(16.dp))
                     Spacer(Modifier.width(6.dp))
-                    Text("AI Suggest", fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                    Text("AI 추천", fontSize = 13.sp, fontWeight = FontWeight.Bold)
                 }
                 Button(
                     onClick = { navigate(Screen.Data, emptyMap()) },
@@ -153,7 +159,7 @@ fun HomeScreen(navigate: (Screen, Map<String, String>) -> Unit) {
                     colors = ButtonDefaults.buttonColors(containerColor = Color.White.copy(alpha = 0.18f), contentColor = Color.White),
                     border = BorderStroke(1.dp, Color.White.copy(alpha = 0.28f)),
                 ) {
-                    Text("Pick Data", fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                    Text("데이터 선택", fontSize = 13.sp, fontWeight = FontWeight.Bold)
                 }
             }
         }
@@ -164,10 +170,10 @@ fun HomeScreen(navigate: (Screen, Map<String, String>) -> Unit) {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(10.dp),
         ) {
-            HomeQuickTile("History", "Previous drafts", Icons.Default.History, Modifier.weight(1f)) {
+            HomeQuickTile("히스토리", "이전 초안", Icons.Default.History, Modifier.weight(1f)) {
                 navigate(Screen.History, emptyMap())
             }
-            HomeQuickTile("Storage", "Collection rules", Icons.Default.Storage, Modifier.weight(1f)) {
+            HomeQuickTile("저장공간", "수집 설정", Icons.Default.Storage, Modifier.weight(1f)) {
                 navigate(Screen.Storage, emptyMap())
             }
         }

@@ -43,7 +43,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun StorageScreen(navigate: (Screen, Map<String, String>) -> Unit) {
-    val periods = listOf("Until app closes", "1 hour", "24 hours", "7 days", "Custom")
+    val periods = listOf("앱 종료 전까지", "1시간", "24시간", "7일", "직접 설정")
     val storageOptions = listOf(250 to "250 MB", 500 to "500 MB", 1024 to "1 GB")
     var selectedPeriod by remember { mutableStateOf(periods.first()) }
     var storageLimit by remember { mutableStateOf(500) }
@@ -69,15 +69,15 @@ fun StorageScreen(navigate: (Screen, Map<String, String>) -> Unit) {
             }
             Spacer(Modifier.width(12.dp))
             Column {
-                Text("Settings", color = Color(0xFF111827), fontSize = 23.sp, fontWeight = FontWeight.ExtraBold)
-                Text("Collection range and storage", color = Color(0xFF8A94A6), fontSize = 11.sp)
+                Text("설정", color = Color(0xFF111827), fontSize = 23.sp, fontWeight = FontWeight.ExtraBold)
+                Text("수집 범위와 저장공간", color = Color(0xFF8A94A6), fontSize = 11.sp)
             }
         }
 
         Spacer(Modifier.height(18.dp))
 
         SettingsCard(
-            title = "Collection period",
+            title = "수집 기간",
             subtitle = selectedPeriod,
             icon = Icons.Default.Storage,
         ) {
@@ -92,13 +92,13 @@ fun StorageScreen(navigate: (Screen, Map<String, String>) -> Unit) {
         Spacer(Modifier.height(12.dp))
 
         SettingsCard(
-            title = "Storage",
-            subtitle = "19,087 items",
+            title = "저장공간",
+            subtitle = "19,087개 항목",
             icon = Icons.Default.Storage,
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Text("${usedStorage} MB / ${if (storageLimit >= 1024) "1 GB" else "$storageLimit MB"}", color = Color(0xFF111827), fontSize = 17.sp, fontWeight = FontWeight.ExtraBold, modifier = Modifier.weight(1f))
-                Text("Clean up", color = AppColors.Blue, fontSize = 12.sp, fontWeight = FontWeight.Bold, modifier = Modifier.clickable { navigate(Screen.Data, mapOf("mode" to "cleanup")) })
+                Text("정리하기", color = AppColors.Blue, fontSize = 12.sp, fontWeight = FontWeight.Bold, modifier = Modifier.clickable { navigate(Screen.Data, mapOf("mode" to "cleanup")) })
             }
             Spacer(Modifier.height(12.dp))
             Box(
@@ -129,8 +129,8 @@ fun StorageScreen(navigate: (Screen, Map<String, String>) -> Unit) {
         Spacer(Modifier.height(12.dp))
 
         SettingsCard(
-            title = "Permission allowed",
-            subtitle = "Images and screenshots can be checked.",
+            title = "권한 허용됨",
+            subtitle = "이미지와 스크린샷을 확인할 수 있어요.",
             icon = Icons.Default.Security,
             trailing = { Icon(Icons.Default.Check, null, tint = Color(0xFF16A34A), modifier = Modifier.size(18.dp)) },
         )
@@ -144,8 +144,8 @@ fun StorageScreen(navigate: (Screen, Map<String, String>) -> Unit) {
             border = BorderStroke(1.dp, Color(0xFFD5E9FF)),
         ) {
             Column(Modifier.weight(1f), horizontalAlignment = Alignment.Start) {
-                Text("Open data manager", fontSize = 13.sp, fontWeight = FontWeight.ExtraBold)
-                Text("Select saved photos, links, and notes.", fontSize = 10.sp, color = Color(0xFF5C8FC0))
+                Text("데이터 관리자 열기", fontSize = 13.sp, fontWeight = FontWeight.ExtraBold)
+                Text("저장된 사진, 링크, 메모를 선택하세요.", fontSize = 10.sp, color = Color(0xFF5C8FC0))
             }
             Icon(Icons.Default.KeyboardArrowRight, null)
         }

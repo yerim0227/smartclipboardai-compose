@@ -118,7 +118,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun TasksScreen(navigate: (Screen, Map<String, String>) -> Unit) {
-    val topics = listOf(Topic("1", "Collected items (5)", 5, "5월 26일 11:34 업데이트", AppColors.Blue, listOf("스크린샷", "회의", "여행")))
+    val topics = listOf(Topic("1", "수집한 항목 (5)", 5, "5월 26일 11:34 업데이트", AppColors.Blue, listOf("스크린샷", "회의", "여행")))
     val steps = listOf("수집" to true, "클러스터" to true, "주제" to true, "AI 분석" to false, "초안" to false, "확인" to false, "실행" to false)
 
     LazyColumn(

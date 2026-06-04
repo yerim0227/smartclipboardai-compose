@@ -258,7 +258,7 @@ fun DataScreen(
                             .fillMaxWidth()
                             .padding(16.dp),
                     ) {
-                        onOpenSheet(selected.size, "Collected items (${selected.size})")
+                        onOpenSheet(selected.size, "수집한 항목 (${selected.size})")
                     }
                 }
             }

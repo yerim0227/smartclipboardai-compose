@@ -66,38 +66,38 @@ private data class HistoryTopic(
 private val historyTopics = listOf(
     HistoryTopic(
         id = "1",
-        title = "Screenshot collection",
-        date = "May 26, 11:34",
+        title = "스크린샷 모음",
+        date = "5월 26일 11:34",
         dataCount = 5,
-        summary = "Meeting materials, travel plans, recipes, and event notes were grouped together.",
+        summary = "회의 자료, 여행 계획, 레시피, 행사 메모가 함께 묶였어요.",
         drafts = listOf(
-            HistoryDraft("note", "Daily note", Icons.Default.Description, AppColors.Blue, "Organized five screenshots into a daily note.", "Executed"),
-            HistoryDraft("calendar", "Calendar", Icons.Default.CalendarMonth, Color(0xFF2563EB), "Added workshop and travel schedules.", "Executed"),
-            HistoryDraft("reminder", "Reminder", Icons.Default.Notifications, AppColors.BlueDeep, "Prepared shopping and workshop reminders.", "Dismissed"),
-            HistoryDraft("share", "Share", Icons.Default.Share, AppColors.Cyan, "Prepared a message summary.", "Draft"),
+            HistoryDraft("note", "일일 노트", Icons.Default.Description, AppColors.Blue, "스크린샷 5개를 일일 노트로 정리했어요.", "실행됨"),
+            HistoryDraft("calendar", "캘린더", Icons.Default.CalendarMonth, Color(0xFF2563EB), "워크숍과 여행 일정을 추가했어요.", "실행됨"),
+            HistoryDraft("reminder", "리마인더", Icons.Default.Notifications, AppColors.BlueDeep, "쇼핑과 워크숍 알림을 준비했어요.", "제외됨"),
+            HistoryDraft("share", "공유", Icons.Default.Share, AppColors.Cyan, "메시지 요약을 준비했어요.", "초안"),
         ),
     ),
     HistoryTopic(
         id = "2",
-        title = "Jeju travel plan",
-        date = "May 22, 09:18",
+        title = "제주 여행 계획",
+        date = "5월 22일 09:18",
         dataCount = 3,
-        summary = "Travel schedule, stay information, and saved places.",
+        summary = "여행 일정, 숙소 정보, 저장한 장소를 정리했어요.",
         drafts = listOf(
-            HistoryDraft("note", "Daily note", Icons.Default.Description, AppColors.Blue, "Created a trip summary.", "Executed"),
-            HistoryDraft("calendar", "Calendar", Icons.Default.CalendarMonth, Color(0xFF2563EB), "Registered the travel dates.", "Executed"),
-            HistoryDraft("share", "Share", Icons.Default.Share, AppColors.Cyan, "Made a travel message draft.", "Edited"),
+            HistoryDraft("note", "일일 노트", Icons.Default.Description, AppColors.Blue, "여행 요약을 만들었어요.", "실행됨"),
+            HistoryDraft("calendar", "캘린더", Icons.Default.CalendarMonth, Color(0xFF2563EB), "여행 날짜를 등록했어요.", "실행됨"),
+            HistoryDraft("share", "공유", Icons.Default.Share, AppColors.Cyan, "여행 메시지 초안을 만들었어요.", "수정됨"),
         ),
     ),
     HistoryTopic(
         id = "3",
-        title = "Weekly meeting notes",
-        date = "May 19, 14:55",
+        title = "주간 회의 메모",
+        date = "5월 19일 14:55",
         dataCount = 4,
-        summary = "Meeting notes, next steps, and upcoming schedules.",
+        summary = "회의 메모, 다음 할 일, 예정 일정을 정리했어요.",
         drafts = listOf(
-            HistoryDraft("note", "Daily note", Icons.Default.Description, AppColors.Blue, "Summarized meeting points.", "Executed"),
-            HistoryDraft("reminder", "Reminder", Icons.Default.Notifications, AppColors.BlueDeep, "Created follow-up reminders.", "Executed"),
+            HistoryDraft("note", "일일 노트", Icons.Default.Description, AppColors.Blue, "회의 핵심 내용을 요약했어요.", "실행됨"),
+            HistoryDraft("reminder", "리마인더", Icons.Default.Notifications, AppColors.BlueDeep, "후속 알림을 만들었어요.", "실행됨"),
         ),
     ),
 )
@@ -130,8 +130,8 @@ fun HistoryScreen(navigate: (Screen, Map<String, String>) -> Unit) {
                 }
                 Spacer(Modifier.width(12.dp))
                 Column {
-                    Text("History", color = AppColors.Slate800, fontSize = 17.sp, fontWeight = FontWeight.ExtraBold)
-                    Text("Previous AI organization jobs ${historyTopics.size}", color = AppColors.Slate400, fontSize = 10.sp)
+                    Text("히스토리", color = AppColors.Slate800, fontSize = 17.sp, fontWeight = FontWeight.ExtraBold)
+                    Text("이전 AI 정리 작업 ${historyTopics.size}개", color = AppColors.Slate400, fontSize = 10.sp)
                 }
             }
         }
@@ -179,11 +179,11 @@ private fun HistoryTopicCard(
                 Spacer(Modifier.width(12.dp))
                 Column(Modifier.weight(1f)) {
                     Text(topic.title, color = AppColors.Slate800, fontSize = 13.sp, fontWeight = FontWeight.ExtraBold, maxLines = 1, overflow = TextOverflow.Ellipsis)
-                    Text("${topic.date} · ${topic.dataCount} data · ${topic.drafts.size} drafts", color = AppColors.Slate400, fontSize = 10.sp)
+                    Text("${topic.date} · 데이터 ${topic.dataCount}개 · 초안 ${topic.drafts.size}개", color = AppColors.Slate400, fontSize = 10.sp)
                 }
-                val executedCount = topic.drafts.count { it.status == "Executed" }
+                val executedCount = topic.drafts.count { it.status == "실행됨" }
                 if (executedCount > 0) {
-                    Pill("$executedCount executed", Color(0xFFD1FAE5), AppColors.Green)
+                    Pill("${executedCount}개 실행됨", Color(0xFFD1FAE5), AppColors.Green)
                 }
                 Icon(Icons.Default.KeyboardArrowRight, null, tint = AppColors.Slate200, modifier = Modifier.size(16.dp))
             }
@@ -201,7 +201,7 @@ private fun HistoryTopicCard(
                 }
                 Column(Modifier.padding(14.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     topic.drafts.forEach { draft ->
-                        val clickable = draft.status == "Draft" || draft.status == "Edited"
+                        val clickable = draft.status == "초안" || draft.status == "수정됨"
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -232,7 +232,7 @@ private fun HistoryTopicCard(
                         colors = ButtonDefaults.buttonColors(containerColor = AppColors.BlueSoft, contentColor = AppColors.Blue),
                         border = BorderStroke(1.dp, Color(0xFFBFDBFE)),
                     ) {
-                        Text("View full detail", fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                        Text("전체 상세 보기", fontSize = 12.sp, fontWeight = FontWeight.Bold)
                     }
                 }
             }
@@ -243,9 +243,9 @@ private fun HistoryTopicCard(
 @Composable
 private fun StatusPill(status: String) {
     val pair = when (status) {
-        "Executed" -> Color(0xFFD1FAE5) to AppColors.Green
-        "Edited" -> Color(0xFFFEF3C7) to Color(0xFFD97706)
-        "Dismissed" -> Color(0xFFF1F5F9) to AppColors.Slate400
+        "실행됨" -> Color(0xFFD1FAE5) to AppColors.Green
+        "수정됨" -> Color(0xFFFEF3C7) to Color(0xFFD97706)
+        "제외됨" -> Color(0xFFF1F5F9) to AppColors.Slate400
         else -> AppColors.BlueSoft to AppColors.Blue
     }
     Pill(status, pair.first, pair.second)

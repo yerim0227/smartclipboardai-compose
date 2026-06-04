@@ -198,7 +198,7 @@ fun SmartClipboardAIApp() {
                 verticalArrangement = Arrangement.spacedBy(14.dp),
             ) {
                 Text("분석 시작", fontSize = 20.sp, fontWeight = FontWeight.ExtraBold, color = AppColors.Slate800)
-                Text("${sheetCount}개의 데이터를 AI Agent로 분석합니다.", fontSize = 12.sp, color = AppColors.Slate500)
+                Text("${sheetCount}개의 데이터를 AI 에이전트로 분석합니다.", fontSize = 12.sp, color = AppColors.Slate500)
                 OutlinedTextField(
                     value = sheetTopicName,
                     onValueChange = { sheetTopicName = it },

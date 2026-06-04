@@ -66,11 +66,11 @@ data class SuggestedTopic(
 )
 
 val suggestedTopics = listOf(
-    SuggestedTopic("1", "Meeting materials", "Turn screenshots and notes into drafts, events, and reminders.", listOf("3 screenshots", "2 notes"), listOf("work", "meeting"), Icons.Default.Description, AppColors.Blue, AppColors.BlueSoft),
-    SuggestedTopic("2", "Jeju travel plan", "Collect stays, places, and links into a travel guide.", listOf("4 screenshots", "3 links"), listOf("travel", "schedule"), Icons.Default.Flight, AppColors.Cyan, Color(0xFFECFEFF)),
-    SuggestedTopic("3", "Recipe collection", "Extract ingredients and steps from saved images.", listOf("6 screenshots"), listOf("recipe", "food"), Icons.Default.CameraAlt, AppColors.Green, Color(0xFFECFDF5)),
-    SuggestedTopic("4", "Shopping wishlist", "Compare saved product links and captures.", listOf("2 screenshots", "6 links"), listOf("shopping"), Icons.Default.ShoppingCart, Color(0xFFD97706), Color(0xFFFFFBEB)),
-    SuggestedTopic("5", "Dev references", "Group code screenshots and docs by topic.", listOf("5 screenshots", "4 links"), listOf("dev", "code"), Icons.Default.Code, Color(0xFF7C3AED), Color(0xFFF5F3FF)),
+    SuggestedTopic("1", "회의 자료", "스크린샷과 메모를 초안, 일정, 알림으로 정리해요.", listOf("스크린샷 3개", "메모 2개"), listOf("업무", "회의"), Icons.Default.Description, AppColors.Blue, AppColors.BlueSoft),
+    SuggestedTopic("2", "제주 여행 계획", "숙소, 장소, 링크를 모아 여행 가이드로 정리해요.", listOf("스크린샷 4개", "링크 3개"), listOf("여행", "일정"), Icons.Default.Flight, AppColors.Cyan, Color(0xFFECFEFF)),
+    SuggestedTopic("3", "레시피 모음", "저장한 이미지에서 재료와 순서를 뽑아 정리해요.", listOf("스크린샷 6개"), listOf("레시피", "음식"), Icons.Default.CameraAlt, AppColors.Green, Color(0xFFECFDF5)),
+    SuggestedTopic("4", "쇼핑 위시리스트", "저장한 상품 링크와 캡처를 비교해요.", listOf("스크린샷 2개", "링크 6개"), listOf("쇼핑"), Icons.Default.ShoppingCart, Color(0xFFD97706), Color(0xFFFFFBEB)),
+    SuggestedTopic("5", "개발 참고자료", "코드 캡처와 문서를 주제별로 묶어요.", listOf("스크린샷 5개", "링크 4개"), listOf("개발", "코드"), Icons.Default.Code, Color(0xFF7C3AED), Color(0xFFF5F3FF)),
 )
 
 @Composable
@@ -116,7 +116,7 @@ fun AiSuggestScreen(navigate: (Screen, Map<String, String>) -> Unit, data: Map<S
                     Spacer(Modifier.width(10.dp))
                     Icon(Icons.Default.AutoAwesome, null, tint = Color(0xFF93C5FD), modifier = Modifier.size(16.dp))
                     Spacer(Modifier.width(6.dp))
-                    Text("AI suggested topics", color = Color.White, fontSize = 15.sp, fontWeight = FontWeight.ExtraBold)
+                    Text("AI 추천 주제", color = Color.White, fontSize = 15.sp, fontWeight = FontWeight.ExtraBold)
                 }
                 Spacer(Modifier.height(16.dp))
                 Column(
@@ -126,15 +126,15 @@ fun AiSuggestScreen(navigate: (Screen, Map<String, String>) -> Unit, data: Map<S
                         .border(1.dp, Color.White.copy(alpha = 0.15f), RoundedCornerShape(18.dp))
                         .padding(14.dp),
                 ) {
-                    Text("Analysis result", color = Color(0xFF93C5FD), fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                    Text("분석 결과", color = Color(0xFF93C5FD), fontSize = 11.sp, fontWeight = FontWeight.Bold)
                     Text(
-                        if (query.isBlank()) "Found ${suggestedTopics.size} topics from all collected data."
-                        else "Found ${suggestedTopics.size} topics for \"$query\".",
+                        if (query.isBlank()) "수집한 전체 데이터에서 ${suggestedTopics.size}개의 주제를 찾았어요."
+                        else "\"$query\"에 맞는 주제 ${suggestedTopics.size}개를 찾았어요.",
                         color = Color.White,
                         fontSize = 13.sp,
                         fontWeight = FontWeight.SemiBold,
                     )
-                    Text("Pick one and AI will prepare action drafts.", color = Color(0xFFA5B4FC), fontSize = 10.sp)
+                    Text("하나를 선택하면 AI가 실행 초안을 준비해요.", color = Color(0xFFA5B4FC), fontSize = 10.sp)
                 }
             }
         }
@@ -161,7 +161,7 @@ fun AiSuggestScreen(navigate: (Screen, Map<String, String>) -> Unit, data: Map<S
                 colors = ButtonDefaults.buttonColors(containerColor = Color.White, contentColor = AppColors.Slate500),
                 border = BorderStroke(1.dp, AppColors.Slate200),
             ) {
-                Text("Pick data directly", fontWeight = FontWeight.Bold)
+                Text("데이터 직접 선택", fontWeight = FontWeight.Bold)
             }
         }
     }
@@ -199,12 +199,12 @@ private fun AiSuggestLoading(query: String, onClose: () -> Unit) {
             Icon(Icons.Default.AutoAwesome, null, tint = Color(0xFF93C5FD), modifier = Modifier.size(30.dp))
         }
         Spacer(Modifier.height(28.dp))
-        Text("AI is analyzing", color = Color.White, fontSize = 21.sp, fontWeight = FontWeight.ExtraBold)
+        Text("AI가 분석 중입니다", color = Color.White, fontSize = 21.sp, fontWeight = FontWeight.ExtraBold)
         if (query.isNotBlank()) {
             Text("\"$query\"", color = Color(0xFF93C5FD), fontSize = 12.sp, modifier = Modifier.padding(top = 10.dp))
         }
         Spacer(Modifier.height(28.dp))
-        listOf("Scanning collected data", "Classifying patterns", "Preparing suggested topics").forEachIndexed { index, label ->
+        listOf("수집 데이터 확인 중", "패턴 분류 중", "추천 주제 준비 중").forEachIndexed { index, label ->
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
