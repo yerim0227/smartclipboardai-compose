@@ -116,13 +116,38 @@ import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            SmartClipboardAITheme {
-                SmartClipboardAIApp()
-            }
-        }
-    }
+object AppColors {
+    val Blue = Color(0xFF1D4ED8)
+    val BlueDeep = Color(0xFF1E3A8A)
+    val BlueSoft = Color(0xFFEFF6FF)
+    val Cyan = Color(0xFF0891B2)
+    val Green = Color(0xFF059669)
+    val Slate900 = Color(0xFF0F172A)
+    val Slate800 = Color(0xFF1E293B)
+    val Slate500 = Color(0xFF64748B)
+    val Slate400 = Color(0xFF94A3B8)
+    val Slate200 = Color(0xFFE2E8F0)
+    val Surface = Color(0xFFF8FAFC)
+    val Border = Color(0xFFE8EDF8)
+    val Red = Color(0xFFDC2626)
 }
+
+val BlueGradient = Brush.linearGradient(listOf(AppColors.BlueDeep, AppColors.Blue, Color(0xFF3B82F6)))
+val DarkGradient = Brush.linearGradient(listOf(Color(0xFF0F1F3D), Color(0xFF1A3660), AppColors.BlueDeep))
+
+
+@Composable
+fun SmartClipboardAITheme(content: @Composable () -> Unit) {
+    MaterialTheme(
+        colorScheme = androidx.compose.material3.lightColorScheme(
+            primary = AppColors.Blue,
+            secondary = AppColors.BlueDeep,
+            background = AppColors.Surface,
+            surface = Color.White,
+            onSurface = AppColors.Slate800,
+        ),
+        content = content,
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
