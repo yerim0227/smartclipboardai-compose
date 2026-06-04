@@ -164,42 +164,5 @@ fun HomeScreen(navigate: (Screen, Map<String, String>) -> Unit) {
             }
         }
 
-        Spacer(Modifier.height(24.dp))
-
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(10.dp),
-        ) {
-            HomeQuickTile("히스토리", "이전 초안", Icons.Default.History, Modifier.weight(1f)) {
-                navigate(Screen.History, emptyMap())
-            }
-            HomeQuickTile("저장공간", "수집 설정", Icons.Default.Storage, Modifier.weight(1f)) {
-                navigate(Screen.Storage, emptyMap())
-            }
-        }
-    }
-}
-
-@Composable
-private fun HomeQuickTile(
-    title: String,
-    subtitle: String,
-    icon: androidx.compose.ui.graphics.vector.ImageVector,
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit,
-) {
-    Button(
-        onClick = onClick,
-        modifier = modifier.height(82.dp),
-        shape = RoundedCornerShape(18.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = AppColors.BlueSoft, contentColor = AppColors.Blue),
-        border = BorderStroke(1.dp, Color(0xFFD5E9FF)),
-    ) {
-        Column(horizontalAlignment = Alignment.Start, modifier = Modifier.fillMaxWidth()) {
-            Icon(icon, null, modifier = Modifier.size(18.dp))
-            Spacer(Modifier.height(8.dp))
-            Text(title, color = AppColors.Slate800, fontSize = 13.sp, fontWeight = FontWeight.ExtraBold)
-            Text(subtitle, color = AppColors.Slate500, fontSize = 10.sp)
-        }
     }
 }
