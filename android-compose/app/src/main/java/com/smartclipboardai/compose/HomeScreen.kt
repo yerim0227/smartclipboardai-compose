@@ -1,5 +1,18 @@
 package com.smartclipboardai.compose
 
+/**
+ * HomeScreen - 홈 화면
+ *
+ * 역할: 앱의 메인 시작 화면
+ *
+ * 주요 기능:
+ * - 앱 로고와 "SmartClipboardAI" 타이틀 표시
+ * - 검색/입력 필드를 통한 자연어 쿼리 입력
+ * - "AI 추천" 버튼: AI 가 자동으로 주제를 제안
+ * - "데이터 선택" 버튼: 사용자가 직접 데이터를 선택
+ * - 설정 드롭다운 메뉴 (히스토리, 저장공간, 수집 데이터로 이동)
+ */
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
