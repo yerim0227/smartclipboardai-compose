@@ -1,5 +1,18 @@
 package com.smartclipboardai.compose
 
+/**
+ * AiSuggestScreen - AI 추천 주제 화면
+ *
+ * 역할: AI 가 분석하여 제안하는 주제 목록 표시
+ *
+ * 주요 기능:
+ * - 로딩 화면: AI 분석 진행 상태 표시 (수집 데이터 확인, 패턴 분류, 추천 주제 준비)
+ * - 추천 주제 카드 (회의 자료, 제주 여행, 레시피, 쇼핑, 개발 자료 등)
+ * - 각 주제별 아이콘, 설명, 데이터 타입, 태그 표시
+ * - "데이터 직접 선택" 버튼
+ * - 쿼리 파라미터에 따른 맞춤형 주제 추천
+ */
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
