@@ -1,5 +1,17 @@
 package com.smartclipboardai.compose
 
+/**
+ * TopicDetailScreen - 주제 상세 화면
+ *
+ * 역할: 특정 주제에 대한 상세 정보 및 생성된 액션 초안 표시
+ *
+ * 주요 기능:
+ * - 주제 제목과 AI 생성 초안 개수 표시
+ * - 액션 카드 목록 (일일 노트, 캘린더, 리마인더, 공유)
+ * - 각 액션 카드는 ActionReviewScreen 으로 이동
+ * - 이전 화면 (AI 추천, 히스토리, 홈) 에 따라 백 네비게이션 처리
+ */
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
