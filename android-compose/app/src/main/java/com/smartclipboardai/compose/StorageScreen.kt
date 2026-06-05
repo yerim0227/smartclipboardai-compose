@@ -1,5 +1,18 @@
 package com.smartclipboardai.compose
 
+/**
+ * StorageScreen - 저장공간 설정 화면
+ *
+ * 역할: 앱의 저장공간 및 수집 범위 설정
+ *
+ * 주요 기능:
+ * - 수집 기간 설정 (앱 종료 전까지, 1 시간, 24 시간, 7 일, 직접 설정)
+ * - 저장공간 사용량 표시 및 제한 설정 (250MB, 500MB, 1GB)
+ * - 저장공간 사용량 프로그레스 바 표시
+ * - 권한 상태 표시
+ * - 데이터 관리자 바로가기
+ */
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
