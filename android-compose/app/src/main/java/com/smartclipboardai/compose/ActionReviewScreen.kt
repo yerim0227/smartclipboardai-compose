@@ -1,5 +1,19 @@
 package com.smartclipboardai.compose
 
+/**
+ * ActionReviewScreen - 액션 검토/수정 화면
+ *
+ * 역할: AI 가 생성한 초안을 검토하고 수정/실행하는 화면
+ *
+ * 주요 기능:
+ * - 제목과 본문 편집 기능
+ * - AI 수정 요청 (짧게, 요약만, 제목 변경, 번역, 더 친근하게)
+ * - 사용자 정의 수정 요청 입력
+ * - 버전 관리 (수정 이력 표시)
+ * - 실행 버튼으로 실제 액션 수행
+ * - 실행 완료 후 TopicDetailScreen 으로 자동 이동
+ */
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
