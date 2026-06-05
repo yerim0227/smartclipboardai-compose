@@ -1,5 +1,17 @@
 package com.smartclipboardai.compose
 
+/**
+ * AnalyzingScreen - AI 분석 중 화면
+ *
+ * 역할: 데이터 분석 진행 상황을 보여주는 로딩/전환 화면
+ *
+ * 주요 기능:
+ * - 선택된 데이터 개수 표시
+ * - 분석 단계 표시 (데이터 불러오기 → 분석 중 → 초안 준비 중)
+ * - 생성된 초안 개수와 종류 실시간 표시
+ * - 분석 완료 후 TopicDetailScreen 으로 자동 이동
+ */
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
