@@ -1,5 +1,17 @@
 package com.smartclipboardai.compose
 
+/**
+ * TasksScreen - 작업/주제 목록 화면
+ *
+ * 역할: 주제별로 정리된 작업 목록 표시
+ *
+ * 주요 기능:
+ * - "데이터 골라 주제 만들기" 카드
+ * - 주제 목록 표시 (제목, 업데이트 시간, 태그, 항목 수)
+ * - AI 워크플로우 단계 표시 (수집 → 클러스터 → 주제 → AI 분석 → 초안 → 확인 → 실행)
+ * - 각 주제를 클릭하면 TopicDetailScreen 으로 이동
+ */
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
