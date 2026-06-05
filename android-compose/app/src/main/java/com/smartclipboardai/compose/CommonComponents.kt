@@ -1,5 +1,29 @@
 package com.smartclipboardai.compose
 
+/**
+ * CommonComponents - 공통 UI 컴포넌트 모음
+ *
+ * 역할: 여러 화면에서 재사용되는 UI 컴포넌트 정의
+ *
+ * 포함된 컴포넌트:
+ * - SimpleTopHeader: 단순 상단 헤더 (제목 + 부제목)
+ * - HeaderRow: 아이콘, 제목, 부제목, 액션이 있는 헤더 행
+ * - CardBlock: 카드 형태의 컨테이너
+ * - GradientButton: 그라디언트 배경 버튼
+ * - DangerSmallButton: 작은 빨간색 위험 버튼 (삭제 등)
+ * - SmallOutlineButton: 작은 아웃라인 버튼
+ * - Pill: 작은 라운드 라벨/뱃지
+ * - StatChip: 아이콘과 라벨이 있는 통계 칩
+ * - IconBubble: 원형 배경 아이콘
+ * - IconButtonPlain: 플레인 아이콘 버튼
+ * - Thumbnail: 데이터 항목 썸네일 (스켈레톤 UI)
+ * - SkeletonLine: 로딩 스켈레톤 라인
+ * - DividerLine: 구분선
+ * - FlowStepRow: 워크플로우 단계 표시 행
+ * - FieldBlock: 폼 필드 블록 (라벨 + 콘텐츠)
+ * - ReadOnlyBox: 읽기 전용 박스
+ */
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
