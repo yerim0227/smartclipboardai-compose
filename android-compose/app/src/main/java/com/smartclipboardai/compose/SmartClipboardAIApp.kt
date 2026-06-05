@@ -1,5 +1,18 @@
 package com.smartclipboardai.compose
 
+/**
+ * SmartClipboardAIApp - 메인 앱 컴포넌트
+ *
+ * 역할: 앱의 전체 구조와 네비게이션 관리
+ *
+ * 주요 기능:
+ * - 화면 간 네비게이션 로직 (Home, Data, Tasks, History, Storage, AiSuggest, Analyzing, TopicDetail, ActionReview)
+ * - 바텀 네비게이션 바 관리 (홈, 데이터, 작업)
+ * - ModalBottomSheet: 분석 시작 확인 다이얼로그 (데이터 선택 후 AI 분석 시작)
+ * - 각 화면을 조건부로 렌더링
+ * - 데이터 선택 모드 상태 관리
+ */
+
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
