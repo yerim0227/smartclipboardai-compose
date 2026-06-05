@@ -1,5 +1,18 @@
 package com.smartclipboardai.compose
 
+/**
+ * HistoryScreen - 히스토리 화면
+ *
+ * 역할: 이전에 실행된 AI 작업 내역 표시
+ *
+ * 주요 기능:
+ * - 과거 주제 목록 (제목, 날짜, 데이터 개수, 실행된 초안 개수)
+ * - 확장 가능한 카드 형태로 상세 정보 표시
+ * - 각 초안의 상태 (실행됨, 수정됨, 제외됨, 초안) 표시
+ * - 개별 초안 클릭 시 ActionReviewScreen 으로 이동
+ * - 전체 상세 보기 버튼으로 TopicDetailScreen 으로 이동
+ */
+
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
